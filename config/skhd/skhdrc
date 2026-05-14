@@ -1,0 +1,17 @@
+# changing window focus
+# fn - j : yabai -m window --focus south
+# fn - k : yabai -m window --focus north
+# fn - h : yabai -m window --focus west
+# fn - l : yabai -m window --focus east
+
+# modifying layout
+shift + ctrl - r : yabai -m space --rotate 270 # rotate clock
+shift + ctrl - j : yabai -m window --warp south
+shift + ctrl - k : yabai -m window --warp north
+shift + ctrl - h : yabai -m window --warp west 
+shift + ctrl - l : yabai -m window --warp east 
+
+# fn - x : yabai -m space --miror x-axis
+# fn - y : yabai -m space --miror y-axis
+
+shift + ctrl - e : yabai -m space --balance

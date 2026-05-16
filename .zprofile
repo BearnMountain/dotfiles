@@ -5,7 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 
 # scripts
-export PATH="$PATH:$HOME/Document/dotfiles/scripts"
+export PATH="$PATH:$HOME/Documents/dotfiles/scripts"
 
 # homebrew
 export HOMEBREW_PREFIX="/opt/homebrew";

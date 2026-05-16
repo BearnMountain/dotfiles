@@ -38,6 +38,9 @@ alias ls='ls -G --color=auto'
 alias ll='ls -lah'
 alias grep='grep --color=auto'
 
+# Apps/Util
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
 # Git prompt (simple + safe)
 autoload -Uz vcs_info
 precmd() { vcs_info }

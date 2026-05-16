@@ -1,6 +1,6 @@
 
 -- Disable LSP logging
-vim.lsp.set_log_level("OFF") 
+-- vim.lsp.set_log_level("OFF") 
 
 -- ensures that ts highlighting is active for colorscheme
 vim.api.nvim_create_autocmd("FileType", {

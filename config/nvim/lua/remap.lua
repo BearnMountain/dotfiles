@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>",    { desc = "closes current 
 -- vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "opens current buffer in new tab" })
 
 -- preferences
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+-- vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" }) -- bad habbit
 vim.keymap.set({"n", "v"}, "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: rename" })
 vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: code actions" })
 vim.keymap.set({"n", "v"}, "<leader>gd", vim.lsp.buf.definition, { desc = "LSP: go to definition" })

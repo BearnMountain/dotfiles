@@ -37,6 +37,7 @@ export VISUAL="nvim"
 alias ls='ls -G --color=auto'
 alias ll='ls -lah'
 alias grep='grep --color=auto'
+alias rmusic='yt-dlp -f "bestaudio" --extract-audio --audio-format flac --audio-quality 0 -P ~/Music/mpd/'
 
 # Apps/Util
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"

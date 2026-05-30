@@ -11,3 +11,7 @@ export PATH="$PATH:$HOME/Documents/dotfiles/scripts"
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
+
+export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin/node"

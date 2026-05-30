@@ -45,11 +45,11 @@ export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 # Git prompt (simple + safe)
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' (%b)'
+zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
 
 # PS1
-PROMPT='%F{cyan}%n%f:%F{blue}%~%f%F{yellow}${vcs_info_msg_0_}%f $ '
+PROMPT='%F{green}%*%f %F{cyan}%n%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 
 # macOS / dev tools
 export LDFLAGS="-L/opt/homebrew/lib"

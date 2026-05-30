@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+import shutil
+from pathlib import Path
+
+KICAD_MODEL_DIR=Path("~/Documents/KiCad/10.0/3dmodels").expanduser()
+KICAD_SYMBOLS_DIR=Path("~/Documents/KiCad/10.0/symbols").expanduser()
+KICAD_FOOTPRINT_DIR=Path("~/Documents/KiCad/10.0/footprints").expanduser()
+
+def main():
+    input_arg=Path(sys.argv[1]).expanduser().resolve()
+
+    # SYMBOL FILES
+    symbol_files = list(Path(input_arg).glob("*.kicad_sym"))
+    print(KICAD_MODEL_DIR)
+    if symbol_files:
+        shutil.move(symbol_files[0], KICAD_SYMBOLS_DIR)
+        print("Found symbol")
+    else:
+        print("No symbol files found")
+
+    # FOOTPRINTS
+    footprints_files = list(Path(input_arg).glob("*.kicad_mod"))
+    if footprints_files:
+        shutil.move(footprints_files[0], KICAD_FOOTPRINT_DIR)
+        print("Found footprint files")
+    else:
+        print("No footprint files found")
+
+    # 3D MODEL FILES
+    model_files = list(Path(input_arg).glob("*.step"))
+    if model_files:
+        shutil.move(model_files[0], KICAD_MODEL_DIR)
+        print("Found 3d files")
+    else:
+        print("No 3d models found")
+    
+
+if __name__ == "__main__":
+    main()

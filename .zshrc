@@ -1,7 +1,7 @@
 # Core Zsh setup
 
 autoload -U compinit
-compinit
+compinit -d ~/.cache/zsh/zcompdump
 
 setopt autocd
 setopt extendedglob
@@ -54,6 +54,11 @@ PROMPT='%F{green}%*%f %F{cyan}%n%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 # macOS / dev tools
 export LDFLAGS="-L/opt/homebrew/lib"
 export CPPFLAGS="-I/opt/homebrew/include"
+
+# redirect files
+export TERMINFO="$HOME/.config/.terminfo"
+export LESSHISTFILE="$HOME/.cache/less/history"
+export SQLITE_HISTORY="$HOME/.cache/sqlite/history"
 
 # Embedded / STM32 (optional)
 # export STM32CubeMX_PATH="/Applications/STM32CubeMX.app/Contents/Resources"

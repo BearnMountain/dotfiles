@@ -39,3 +39,8 @@ Thumbs.db
 ################
 .vscode
 .zed
+
+# Project Files #
+#################
+build/
+

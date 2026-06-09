@@ -58,3 +58,6 @@ yabai -m rule --add app="^Discord$" manage=off
 yabai -m rule --add app="^GitHub Desktop$" manage=off
 yabai -m rule --add app="^Gallery$" manage=off
 yabai -m rule --add app="^super-tux-brawl$" manage=off
+yabai -m rule --add app="^Drone-Ground-Station$" manage=off
+
+

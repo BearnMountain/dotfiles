@@ -34,8 +34,31 @@ vim.keymap.set({"n", "v"}, "<leader>cf", function()
 	if string.sub(current_path, -2) == '.c' then
 		vim.cmd('edit ' .. current_path:sub(1, -2) .. 'h')
 	end
+	if string.sub(current_path, -4) == '.cpp' then
+		vim.cmd('edit ' .. current_path:sub(1, -4) .. 'h')
+	end
+
+	-- checks if there exists c or cpp file to switch to
 	if string.sub(current_path, -2) == '.h' then
-		vim.cmd('edit ' .. current_path:sub(1, -2) .. 'c')
+		local base = current_path:gsub("%.h$", "")
+
+		local function file_exists(path)
+			local stat = vim.loop.fs_stat(path)
+			return stat ~= nil
+		end
+
+
+		if string.sub(current_path, -2) == ".h" then
+			local c_file = base .. ".c"
+			local cpp_file = base .. ".cpp"
+
+			if file_exists(c_file) then
+				vim.cmd("edit " .. c_file)
+			elseif file_exists(cpp_file) then
+				vim.cmd("edit " .. cpp_file)
+			end
+		end
+
 	end
 end, { desc = "Switch source and header" })
 vim.keymap.set({"n", "v"}, "<leader>q", "<cmd>noh<CR>", { desc = "turn highlighting off" })

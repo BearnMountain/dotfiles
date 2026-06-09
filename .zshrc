@@ -39,6 +39,7 @@ alias ll='ls -lah'
 alias grep='grep --color=auto'
 alias rmusic='yt-dlp -f "bestaudio" --extract-audio --audio-format flac --audio-quality 0 -P ~/Music/mpd/'
 
+
 # Apps/Util
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
@@ -48,8 +49,13 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
 
+# ---- Terminal Configuration ----
 # PS1
-PROMPT='%F{green}%*%f %F{cyan}%n%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
+PROMPT='%F{green}%*%f %F{cyan}%n%f %F{blue}%1~%f %F{red}${vcs_info_msg_0_}%f$ '
+
+# keybinds
+bindkey "^K" up-line-or-history # navigate history
+bindkey "^J" down-line-or-history
 
 # macOS / dev tools
 export LDFLAGS="-L/opt/homebrew/lib"

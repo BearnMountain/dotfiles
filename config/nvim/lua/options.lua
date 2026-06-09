@@ -14,6 +14,7 @@ vim.opt.wrap = false
 -- search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.g.netrw_sort_by = "size" 
 
 -- highlights the line
 vim.opt.cursorline = true
@@ -33,6 +34,7 @@ vim.opt.clipboard:append("unnamedplus") -- uses system clipboard as default regi
 vim.opt.splitright = true -- has the split go to the rightside of my window
 
 vim.opt.swapfile = false
+
 
 vim.o.mouse = ""
 vim.keymap.set("", "<up>", "<nop>", { noremap = true })

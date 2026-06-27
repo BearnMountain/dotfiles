@@ -57,6 +57,8 @@ PROMPT='%F{green}%*%f %F{cyan}%n%f %F{blue}%1~%f %F{red}${vcs_info_msg_0_}%f$ '
 bindkey "^K" up-line-or-history # navigate history
 bindkey "^J" down-line-or-history
 
+bindkey "^a" beginning-of-line
+
 # macOS / dev tools
 export LDFLAGS="-L/opt/homebrew/lib"
 export CPPFLAGS="-I/opt/homebrew/include"

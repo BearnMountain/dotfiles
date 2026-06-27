@@ -197,3 +197,12 @@ end, {})
 
 -- netrw file sorting
 vim.g.netrw_sort_sequence = '[.]h$, [.]hpp$, [.]c$, [.]cpp$, *'
+
+-- for treesitter
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.h", "*.hpp" },
+	callback = function()
+		vim.bo.filetype = "cpp"
+	end,
+})
+

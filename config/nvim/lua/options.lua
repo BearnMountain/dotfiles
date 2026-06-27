@@ -14,7 +14,7 @@ vim.opt.wrap = false
 -- search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.g.netrw_sort_by = "size" 
+vim.g.netrw_sort_by = "name" 
 
 -- highlights the line
 vim.opt.cursorline = true
@@ -35,7 +35,10 @@ vim.opt.splitright = true -- has the split go to the rightside of my window
 
 vim.opt.swapfile = false
 
+-- preferences
+vim.opt.colorcolumn = "80"
 
+-- disables weakness
 vim.o.mouse = ""
 vim.keymap.set("", "<up>", "<nop>", { noremap = true })
 vim.keymap.set("", "<down>", "<nop>", { noremap = true })

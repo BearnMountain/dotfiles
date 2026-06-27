@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pbpaste | tr ' ' '\n' | grep -E '^https?://' | while read url; do
+  /Applications/Firefox.app/Contents/MacOS/firefox --private-window "$url"
+done

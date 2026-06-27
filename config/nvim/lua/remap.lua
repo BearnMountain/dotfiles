@@ -26,6 +26,15 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>",    { desc = "closes current 
 vim.keymap.set({"n", "v"}, "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: rename" })
 vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: code actions" })
 vim.keymap.set({"n", "v"}, "<leader>gd", vim.lsp.buf.definition, { desc = "LSP: go to definition" })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		vim.keymap.set("n", "<CR>", function()
+			vim.cmd("cc")
+			vim.cmd("cclose")
+		end, { buffer = true, silent = true })
+	end,
+})
 vim.keymap.set({"n", "v"}, "<leader>cf", function()
 	local current_path = vim.api.nvim_buf_get_name(0)
 	if current_path == "" then 

@@ -13,7 +13,9 @@ return {
 			"json", 
 			"markdown",
 			"python",
-			"toml"
+			"rust",
+			"toml",
+			"wgsl",
 		}
 		local installed = require("nvim-treesitter.config").get_installed()
 		local to_install = vim.iter(ensure_installed)

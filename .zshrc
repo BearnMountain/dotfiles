@@ -71,3 +71,4 @@ export SQLITE_HISTORY="$HOME/.cache/sqlite/history"
 # Embedded / STM32 (optional)
 # export STM32CubeMX_PATH="/Applications/STM32CubeMX.app/Contents/Resources"
 # export STM32_PRG_PATH="/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/.../bin"
+export PATH="$HOME/.cargo/bin:$PATH"

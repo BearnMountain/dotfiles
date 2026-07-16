@@ -1,10 +1,10 @@
--- return {
---     "tiagovla/tokyodark.nvim",
---     priority = 1000,
---     config = function()
---         vim.cmd [[colorscheme tokyodark]]
---     end,
--- }
+return {
+    "tiagovla/tokyodark.nvim",
+    priority = 1000,
+    config = function()
+        vim.cmd [[colorscheme tokyodark]]
+    end,
+}
 
 -- return {
 --     "sainnhe/gruvbox-material",
@@ -53,32 +53,32 @@
 -- }
 	
 
-return {
-  {
-    "cryptomilk/nightcity.nvim",
-    version = false,
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = "kabuki",
-      on_highlights = function(hl, c)
-        local bg = "#0b0b0d" -- darker background
-
-        hl.Normal = { bg = bg }
-        hl.NormalFloat = { bg = bg }
-        hl.FloatBorder = { bg = bg }
-        hl.SignColumn = { bg = bg }
-        hl.LineNr = { bg = bg }
-        hl.CursorLine = { bg = "#111113" }
-        hl.CursorLineNr = { bg = bg }
-      end,
-    },
-	config = function(_, opts)
-      require("nightcity").setup(opts)
-      vim.cmd.colorscheme("nightcity")
-    end,
-  },
-}
+-- return {
+-- 	{
+-- 		"cryptomilk/nightcity.nvim",
+-- 		version = false,
+-- 		lazy = false,
+-- 		priority = 1000,
+-- 		opts = {
+-- 			style = "kabuki",
+-- 			on_highlights = function(hl, c)
+-- 				local bg = "#0b0b0d" -- darker background
+--
+-- 				hl.Normal = { bg = bg }
+-- 				hl.NormalFloat = { bg = bg }
+-- 				hl.FloatBorder = { bg = bg }
+-- 				hl.SignColumn = { bg = bg }
+-- 				hl.LineNr = { bg = bg }
+-- 				hl.CursorLine = { bg = "#111113" }
+-- 				hl.CursorLineNr = { bg = bg }
+-- 			end,
+-- 		},
+-- 		config = function(_, opts)
+-- 			require("nightcity").setup(opts)
+-- 			vim.cmd.colorscheme("nightcity")
+-- 		end,
+-- 	},
+-- }
 
 -- return {
 -- 	-- Neovim config with moonfly colorscheme

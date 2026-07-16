@@ -23,12 +23,13 @@ return {
         vim.lsp.enable({
             "lua_ls",
             "clangd",
-            "rust-analyzer",
+            "rust_analyzer",
             "texlab",
             "tinymist",
             "zls",
             "pylsp",
 			"pyright",
+			"wgsl_analyzer",
         })
 
         vim.lsp.config("*", {
@@ -72,6 +73,43 @@ return {
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 			root_markers = { ".clangd", ".clang-format", "compile_commands.json", ".git" },
 		}
+		vim.lsp.config.rust_analyzer = {
+			capabilities = capabilities,
+			filetypes = { "rust" },
+			root_markers = { "Cargo.toml", ".git" },
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+					},
+					checkOnSave = true,
+					procMacro = {
+						enable = true,
+					},
+				},
+			},
+		}		
+		vim.lsp.config.wgsl_analyzer = {
+			capabilities = capabilities,
+			filetypes = { "wgsl" },
+			root_markers = { ".git" },
+			settings = {
+				["wgsl-analyzer"] = {
+					diagnostics = true,
+				},
+			},
+		}
+		vim.g.rustaceanvim = {
+			server = {
+				settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							target = "wasm32-unknown-unknown",
+						},
+					},
+				},
+			},
+		}
 		vim.lsp.config.matlab_ls = {
 			cmd = {
 				"node",
@@ -103,6 +141,7 @@ return {
                 odin = "odin",
 				cu = "cpp",
 				mm = "objcpp",
+				wgsl = "wgsl",
             },
         })
     end

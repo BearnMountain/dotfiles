@@ -32,11 +32,11 @@ return {
         signature = {
             enabled = false,
         },
-        fuzzy = {
-            prebuilt_binaries = {
-                download = true,
-            },
-        },
+        -- fuzzy = {
+        --     prebuilt_binaries = {
+        --         download = true,
+        --     },
+        -- },
         keymap = {
 			-- set to 'none' to disable the 'default' preset
 			preset = 'default',

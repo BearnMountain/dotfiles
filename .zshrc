@@ -38,6 +38,7 @@ alias ls='ls -G --color=auto'
 # alias ll='ls -lah'
 alias grep='grep --color=auto'
 alias rmusic='yt-dlp -f "bestaudio" --extract-audio --audio-format flac --audio-quality 0 -P ~/Music/mpd/'
+alias dtwt='npx twt-dl-cli@latest'
 
 
 # Apps/Util

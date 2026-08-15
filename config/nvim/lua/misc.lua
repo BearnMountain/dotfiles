@@ -50,6 +50,8 @@ vim.diagnostic.config({
 	update_in_insert = false, -- Don't show messages while typing
 })
 
+vim.lsp.set_log_level(vim.log.levels.ERROR)
+
 -- reformats file
 function FormatBuffer()
 	local save_cursor = vim.fn.getpos('.')

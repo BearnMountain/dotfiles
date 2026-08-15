@@ -26,6 +26,7 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>",    { desc = "closes current 
 vim.keymap.set({"n", "v"}, "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: rename" })
 vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: code actions" })
 vim.keymap.set({"n", "v"}, "<leader>gd", vim.lsp.buf.definition, { desc = "LSP: go to definition" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Floating diagnostic messages" })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
 	callback = function()

@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+"""
+Converts files named like:
+    Artist - Title [videoID].webm
+into:
+    <music_dir>/artist_name/title.opus
+
+- Folder/file names use underscores instead of spaces (e.g. "the_neighbourhood").
+- Files with no "Artist - " prefix go under a "random" folder.
+- Proper title/artist tags are embedded (with normal spacing, not underscores).
+- Audio is stream-copied (no re-encode) since the source is already Opus-in-webm.
+- Original .webm files are deleted after a successful conversion.
+
+Usage:
+    Set FROM and TO below, then run:
+        python3 convert_music.py
+"""
+
+import re
+import subprocess
+import sys
+import unicodedata
+from pathlib import Path
+
+# ---- Configure these ----
+FROM = "~/Music/Holding"   # directory containing the .webm files to convert
+TO = "~/Music/mpd"             # root directory to place artist/ folders into
+DRY_RUN = False                # set True to preview without converting/deleting anything
+# --------------------------
+
+
+def clean_bracket_suffix(name: str) -> str:
+    """Strip a trailing ' [videoID]' (or similar bracketed suffix) from a filename stem."""
+    return re.sub(r"\s*\[[^\[\]]*\]\s*$", "", name).strip()
+
+
+def normalize_for_path(text: str) -> str:
+    """Lowercase, normalize unicode punctuation, collapse whitespace, replace spaces with underscores."""
+    # Normalize weird unicode chars like full-width '？' -> '?'
+    text = unicodedata.normalize("NFKC", text)
+    text = text.replace("？", "?")
+
+    text = text.strip().lower()
+    # Collapse any run of whitespace to a single space first
+    text = re.sub(r"\s+", " ", text)
+    # Remove characters that are problematic in filenames
+    text = re.sub(r'[\\/:*?"<>|]', "", text)
+    text = text.strip()
+    # Replace spaces with underscores
+    text = text.replace(" ", "_")
+    return text
+
+
+def parse_artist_title(stem: str):
+    """Given a filename stem (no extension), return (artist_or_None, title)."""
+    cleaned = clean_bracket_suffix(stem)
+    if " - " in cleaned:
+        artist, title = cleaned.split(" - ", 1)
+        artist = artist.strip()
+        title = title.strip()
+        if artist:
+            return artist, title
+    return None, cleaned
+
+
+def convert_file(src: Path, music_dir: Path, dry_run: bool) -> bool:
+    stem = src.stem
+    artist, title = parse_artist_title(stem)
+
+    display_artist = artist if artist else "Random"
+    display_title = title
+
+    artist_dirname = normalize_for_path(artist) if artist else "random"
+    title_filename = normalize_for_path(title) + ".opus"
+
+    dest_dir = music_dir / artist_dirname
+    dest_path = dest_dir / title_filename
+
+    print(f"[{'DRY RUN' if dry_run else 'CONVERT'}] {src.name}")
+    print(f"    -> {dest_path.relative_to(music_dir.parent) if music_dir.parent in dest_path.parents else dest_path}")
+    print(f"    tags: artist={display_artist!r} title={display_title!r}")
+
+    if dry_run:
+        return True
+
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    if dest_path.exists():
+        print(f"    !! Destination already exists, skipping conversion (source left in place): {dest_path}")
+        return False
+
+    cmd = [
+        "ffmpeg",
+        "-y",
+        "-i", str(src),
+        "-vn",
+        "-c:a", "copy",
+        "-metadata", f"title={display_title}",
+        "-metadata", f"artist={display_artist}",
+        str(dest_path),
+    ]
+
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    if result.returncode != 0:
+        print(f"    !! ffmpeg failed for {src.name}, leaving source file in place:")
+        print(result.stdout)
+        # Clean up partial output file if it was created
+        if dest_path.exists():
+            dest_path.unlink()
+        return False
+
+    return True
+
+
+def main():
+    source_dir = Path(FROM).expanduser().resolve()
+    music_dir = Path(TO).expanduser().resolve()
+
+    if not source_dir.is_dir():
+        print(f"Error: {source_dir} is not a directory", file=sys.stderr)
+        sys.exit(1)
+
+    webm_files = sorted(source_dir.glob("*.webm"))
+    if not webm_files:
+        print(f"No .webm files found in {source_dir}")
+        return
+
+    print(f"Found {len(webm_files)} .webm file(s). Output root: {music_dir}\n")
+
+    converted = 0
+    failed = 0
+
+    for src in webm_files:
+        ok = convert_file(src, music_dir, DRY_RUN)
+        if DRY_RUN:
+            continue
+        if ok:
+            src.unlink()
+            converted += 1
+        else:
+            failed += 1
+        print()
+
+    if not DRY_RUN:
+        print(f"Done. Converted: {converted}, Failed/skipped: {failed}")
+
+
+if __name__ == "__main__":
+    main()

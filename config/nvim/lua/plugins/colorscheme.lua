@@ -1,10 +1,10 @@
-return {
-    "tiagovla/tokyodark.nvim",
-    priority = 1000,
-    config = function()
-        vim.cmd [[colorscheme tokyodark]]
-    end,
-}
+-- return {
+--     "tiagovla/tokyodark.nvim",
+--     priority = 1000,
+--     config = function()
+--         vim.cmd [[colorscheme tokyodark]]
+--     end,
+-- }
 
 -- return {
 --     "sainnhe/gruvbox-material",
@@ -37,20 +37,22 @@ return {
 -- 	end,
 -- }
 
--- return {
---     "sainnhe/sonokai",
---     lazy = false,
---     priority = 1000,
---     config = function()
---         vim.g.sonokai_enable_italic = true
---         vim.cmd("colorscheme sonokai")
---         vim.g.sonokai_style = "atlantis"
---         vim.cmd([[set background=dark]])
---         vim.api.nvim_set_hl(0, "Function", { fg = "#5f875f" })
---         vim.api.nvim_set_hl(0, "Normal", { bg = "#121212" }) -- 1a1d23 alt
---         vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1c1c1c" })  -- Lighter background for inactive windows
---     end,
--- }
+return {
+    "sainnhe/sonokai",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        vim.g.sonokai_enable_italic = true
+        vim.cmd("colorscheme sonokai")
+        vim.g.sonokai_style = "atlantis"
+        vim.cmd([[set background=dark]])
+        vim.api.nvim_set_hl(0, "Function", { fg = "#5f875f" })
+        vim.api.nvim_set_hl(0, "Normal", { bg = "#121212" }) -- 1a1d23 alt
+        -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#5f875f" })  -- Lighter background for inactive windows
+		vim.api.nvim_set_hl(0, "Normal", { bg = "#121212" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "#121212" })
+    end,
+}
 	
 
 -- return {

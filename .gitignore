@@ -1,6 +1,6 @@
 config/mpd/mpd.db
 config/mpd/mpd.log
 config/mpd/pid
-config/mpd/playlists/Classic.m3u
+config/mpd/playlists
 config/mpd/state
 config/mpd/sticker.sql

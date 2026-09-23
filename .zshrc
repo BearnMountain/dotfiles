@@ -48,7 +48,7 @@ export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 # Git prompt (simple + safe)
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:git:*' formats '(%b) '
 setopt PROMPT_SUBST
 
 # ---- Terminal Configuration ----
@@ -68,10 +68,15 @@ hex_color() {
 # COLOR_PATH=$'\e[38;2;202;210;197m'
 # COLOR_VCS=$'\e[38;2;157;2;8m'
 
-COLOR_TIME=$(hex_color "#3e5641")
-COLOR_USER=$(hex_color "#84a98c")
-COLOR_PATH=$(hex_color "#cad2c5")
-COLOR_VCS=$(hex_color  "#9d0208")
+# COLOR_TIME=$(hex_color "#3e5641")
+# COLOR_USER=$(hex_color "#84a98c")
+# COLOR_PATH=$(hex_color "#cad2c5")
+# COLOR_VCS=$(hex_color  "#9d0208")
+
+COLOR_TIME=$(hex_color "#506b54")
+COLOR_USER=$(hex_color "#9bbfa3")
+COLOR_PATH=$(hex_color "#dce3d8")
+COLOR_VCS=$(hex_color "#c1121f")
 
 # COLOR_TIME=$'\e[38;2;62;86;65m'
 # COLOR_USER=$'\e[38;2;162;73;54m'

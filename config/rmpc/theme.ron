@@ -21,9 +21,9 @@
     ),
     progress_bar: (
         symbols: ["─", "⊙", " "],
-        track_style: (bg: "#111111"),
-        elapsed_style: (fg: "#4f8f52", bg: "#111111"),
-        thumb_style: (fg: "#4f8f52", bg: "#111111"),
+        track_style: (bg: "default"),
+        elapsed_style: (fg: "#4f8f52", bg: "default"),
+        thumb_style: (fg: "#4f8f52", bg: "default"),
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
@@ -33,9 +33,9 @@
     ),
     browser_column_widths: [0, 58, 42],
     text_color: "#5f8787",
-    background_color: "#111111",
-    header_background_color: "#111111",
-    modal_background_color: "#111111",
+    background_color: "default",
+    header_background_color: "default",
+    modal_background_color: "default",
     modal_backdrop: false,
     tab_bar: (active_style: (fg: "#ffffff", bg: "#003e1f", modifiers: "Bold"), inactive_style: (fg: "#5f8787", bg: "#111111")),
     borders_style: (fg: "#5f8787"),
@@ -44,15 +44,15 @@
     highlight_border_style: (fg: "#4f8f52"),
     song_table_format: [
         (
-            prop: (kind: Property(Artist), style: (fg: "#ffffff"), default: (kind: Text("Unknown"))),
+            prop: (kind: Property(Artist), style: (fg: "#DB9558"), default: (kind: Text("Unknown"))),
             width: "35%",
         ),
         (
-            prop: (kind: Property(Title), style: (fg: "#4f8f52"), default: (kind: Text("Unknown"))),
+            prop: (kind: Property(Title), style: (fg: "#4F5B2A"), default: (kind: Text("Unknown"))),
             width: "49%",
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#5f8787"), default: (kind: Text("-"))),
+            prop: (kind: Property(Duration), style: (fg: "#D8C9A8"), default: (kind: Text("-"))),
             width: "15%",
 			alignment: Right,
         ),

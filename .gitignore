@@ -4,3 +4,4 @@ config/mpd/pid
 config/mpd/playlists
 config/mpd/state
 config/mpd/sticker.sql
+config/tmux/plugins/tpm

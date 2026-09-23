@@ -1,7 +1,3 @@
-
--- Disable LSP logging
--- vim.lsp.set_log_level("OFF") 
-
 -- ensures that ts highlighting is active for colorscheme
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
@@ -30,13 +26,29 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- lsp applies to rmlui
+-- 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "fsharp" },
+	callback = function()
+		vim.opt_local.expandtab = true
+	end,
+})
+
+-- lsp applies to other files
 vim.filetype.add({
 	extension = {
 		rcss = 'css',
 		rml = 'html'
 	}
 })
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+	pattern = "*.vhd",
+	callback = function ()
+		vim.bo.filetype = "vhdl"
+	end
+})
+
+
 
 -- turns off warnings
 vim.diagnostic.config({
@@ -50,7 +62,7 @@ vim.diagnostic.config({
 	update_in_insert = false, -- Don't show messages while typing
 })
 
-vim.lsp.set_log_level(vim.log.levels.ERROR)
+vim.lsp.log.set_level(vim.log.levels.ERROR)
 
 -- reformats file
 function FormatBuffer()

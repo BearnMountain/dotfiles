@@ -5,18 +5,20 @@ return {
 	lazy = false,
 	init = function()
 		local ensure_installed = { 
-			"c", 
-			"cpp", 
-			"lua", 
-			"bash", 
-			"vimdoc", 
-			"json", 
-			"markdown",
-			"python",
-			"rust",
-			"toml",
-			"wgsl",
-		}
+            "c",
+            "cpp",
+            "lua",
+            "bash",
+            "vimdoc",
+            "markdown",
+            "python",
+            "rust",
+            "toml",
+            "json",
+            "yaml",
+            "wgsl",
+            "fsharp",
+        }
 		local installed = require("nvim-treesitter.config").get_installed()
 		local to_install = vim.iter(ensure_installed)
 			:filter(function(p) return not vim.tbl_contains(installed, p) end)

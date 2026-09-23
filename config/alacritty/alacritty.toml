@@ -100,7 +100,7 @@ mods = "Shift"
 history = 10000
 
 [colors.primary]
-background = "0x15181D"
+background = "0x111111" # "0x15181D"
 foreground = "0xffffff"
 
 [window]

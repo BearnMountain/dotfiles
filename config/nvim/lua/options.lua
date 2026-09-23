@@ -5,7 +5,7 @@ vim.opt.number = true
 -- tabs & indentation
 vim.opt.tabstop    = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab  = false
+vim.opt.expandtab  = false -- disabled for f#
 vim.opt.autoindent = true
 vim.opt.scrolloff = 10
 

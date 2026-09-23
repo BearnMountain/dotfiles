@@ -2,9 +2,10 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
         "L3MON4D3/LuaSnip",
-        'saghen/blink.cmp',
-        'chomosuke/typst-preview.nvim',
+        "saghen/blink.cmp",
+        "chomosuke/typst-preview.nvim",
     },
     config = function()
         local blink = require('blink.cmp')
@@ -20,6 +21,14 @@ return {
             PATH = "append",
         })
 
+		vim.lsp.config.vhdl_ls = {
+			cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/vhdl_ls") },
+			filetypes = { "vhdl" },
+			capabilities = capabilities,
+			root_markers = { "vhdl_ls.toml", ".git" },
+		}
+
+
         vim.lsp.enable({
             "lua_ls",
             "clangd",
@@ -30,6 +39,18 @@ return {
             "pylsp",
 			"pyright",
 			"wgsl_analyzer",
+
+			-- chisel
+			"jdtls",
+
+			-- digital design
+			"vhdl_ls",
+			"verible",
+			"svlangserver",
+			"svls",
+
+			-- functional programming
+			-- "fsautocomplete",
         })
 
         vim.lsp.config("*", {
@@ -60,6 +81,29 @@ return {
             },
 
         }
+		-- vim.lsp.config.metals = {
+		-- 	capabilities = capabilities,
+		--
+		-- 	filetypes = {
+		-- 		"scala",
+		-- 		"sbt",
+		-- 	},
+		--
+		-- 	root_markers = {
+		-- 		"build.sbt",
+		-- 		"build.sc",
+		-- 		"pom.xml",
+		-- 		".git",
+		-- 	},
+		--
+		-- 	settings = {
+		-- 		metals = {
+		-- 			showImplicitArguments = true,
+		-- 			showImplicitConversionsAndClasses = true,
+		-- 			showInferredType = true,
+		-- 		},
+		-- 	},
+		-- }
 		vim.lsp.config.clangd = {
 			cmd = {
 				"/opt/homebrew/opt/llvm/bin/clangd",

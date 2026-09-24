@@ -5,3 +5,14 @@ config/mpd/playlists
 config/mpd/state
 config/mpd/sticker.sql
 config/tmux/plugins/tpm
+
+HOLDING/
+
+config/.obsidian/workspace.json
+config/.obsidian/workspace-mobile.json
+config/.obsidian/cache/
+config/.obsidian/graph.json
+
+# OS files
+.DS_Store
+Thumbs.db

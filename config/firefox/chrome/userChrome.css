@@ -1,62 +1,37 @@
-/* Remove navigation buttons */
+/* =========================================================
+   1. HIDE UNWANTED UI
+   ========================================================= */
+
+/* Navigation buttons */
 #back-button,
 #forward-button,
 #reload-button,
-#stop-button {
-    display: none !important;
-}
+#stop-button,
 
-/* Remove toolbar overflow / extensions / hamburger menu */
+/* Overflow / extensions / hamburger / account / all-tabs */
 #nav-bar-overflow-button,
 #unified-extensions-button,
-#PanelUI-menu-button {
-    display: none !important;
-}
+#PanelUI-menu-button,
+#fxa-toolbar-menu-button,
+#alltabs-button,
 
-/* === Hide the Extensions (puzzle piece) button === */
-#unified-extensions-button {
-  display: none !important;
-}
-
-/* === Hide the "List All Tabs" (tab overflow/dropdown) button === */
-#alltabs-button {
-  display: none !important;
-}
-/* on some versions this is the wrapping toolbar item instead */
-#new-tab-button ~ #alltabs-button,
-.tabbrowser-tab ~ #alltabs-button {
-  display: none !important;
-}
-
-/* === Hide the Firefox Account / avatar button === */
-#fxa-toolbar-menu-button {
-  display: none !important;
-}
-
-/* === Hide window controls: close, minimize, maximize/fullscreen === */
+/* Window controls */
 .titlebar-buttonbox-container,
 #titlebar-buttonbox,
 #titlebar-min,
 #titlebar-max,
 #titlebar-close,
-#titlebar-fullscreen-button {
+#titlebar-fullscreen-button,
+
+/* Menubar */
+#toolbar-menubar {
   display: none !important;
 }
 
-#titlebar {
-  padding-top: 0 !important;
-}
+/* =========================================================
+   2. COLOR SCHEME (#111111)
+   ========================================================= */
 
-#TabsToolbar {
-  margin-top: 2px !important;   /* nudge this up/down to match the icon row */
-  padding-top: 0 !important;
-}
-
-#tabbrowser-tabs {
-  margin-top: 0 !important;
-}
-
-/* 2. Dark #111111 color scheme across the chrome */
 :root {
   --toolbar-bgcolor: #111111 !important;
   --toolbar-color: #e8e8e8 !important;
@@ -84,57 +59,78 @@
   background-color: #1e1e1e !important;
 }
 
-/* Collapse reserved space from hidden titlebar/toolbar elements */
-#titlebar-buttonbox-container,
-#titlebar-buttonbox {
-    width: 0 !important;
-    min-width: 0 !important;
-}
+/* =========================================================
+   3. SIDEBAR TIGHTENING
+   ========================================================= */
 
-#navigator-toolbox {
-    padding-top: 0 !important;
-}
-
-#TabsToolbar {
-    min-height: 30px !important;
-    height: 30px !important;
-}
-
-#titlebar {
-    height: auto !important;
-}
-
-/* Tighten the sidebar header row (Firefox logo / icons area) */
 #sidebar-header {
-    min-height: 0 !important;
-    padding: 4px !important;
+  min-height: 0 !important;
+  padding: 4px !important;
 }
 
 #sidebar-box {
-    min-height: 0 !important;
+  min-height: 0 !important;
 }
 
 .sidebar-panel {
-    padding: 0 !important;
-    margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Remove extra spacing around sidebar toolbar buttons */
 #sidebar-box toolbarbutton {
-    margin: 2px !important;
-    padding: 4px !important;
+  margin: 2px !important;
+  padding: 4px !important;
 }
 
-/* Nudge the sidebar toggle/panel icon to the right */
+/* Nudge sidebar toggle icon right (adjust to taste) */
 #sidebar-header button,
 #sidebar-header .toolbarbutton-1,
-#sidebar-box .toolbarbutton-1:first-child {
-    margin-left: 7px !important; /* adjust value to taste */
-}
-
-/* If it's specifically the "expand/collapse sidebar" button */
+#sidebar-box .toolbarbutton-1:first-child,
 #sidebar-button,
 #vertical-tabs-toggle-button,
 .sidebar-panel-header button:first-child {
-    margin-left: 7px !important;
+  margin-left: 7px !important;
+}
+
+/* =========================================================
+   4. SINGLE-ROW LAYOUT: [urlbar][downloads][history] | [tabs]
+   ========================================================= */
+
+:root #navigator-toolbox {
+  display: flex !important;
+  flex-direction: row-reverse !important;  /* DOM is tabs, then nav bar; this flips it */
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* Nav bar (urlbar etc.) ends up on the LEFT */
+:root #navigator-toolbox > #nav-bar {
+  order: 0 !important;
+  flex: 0 0 35% !important;
+  min-width: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Tabs end up on the RIGHT, filling the rest */
+:root #navigator-toolbox > #titlebar {
+  order: 0 !important;
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+#TabsToolbar {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Bookmarks bar (if shown) drops to its own row below */
+:root #navigator-toolbox > #PersonalToolbar {
+  order: 3 !important;
+  flex: 0 0 100% !important;
 }

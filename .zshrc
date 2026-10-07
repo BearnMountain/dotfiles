@@ -40,6 +40,7 @@ alias grep='grep --color=auto'
 alias rmusic='yt-dlp -f "bestaudio" --extract-audio --audio-format flac --audio-quality 0 -P ~/Music/mpd/'
 alias dtwt='npx twt-dl-cli@latest'
 alias wgetpage='wget --mirror --convert-links --adjust-extension --page-requisites --no-parent'
+alias glow='glow -p'
 
 
 # Apps/Util
@@ -122,3 +123,5 @@ autoload -Uz compinit
 
 # opencode
 export PATH=/Users/bearn/.opencode/bin:$PATH
+# for scala
+export JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 | grep 'java.home' | awk '{print $3}')
